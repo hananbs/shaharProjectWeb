@@ -87,29 +87,145 @@
         <!-- עמוד שירותים (Services) -->
         <div id="view-services" class="page-view py-20 px-4 max-w-7xl mx-auto">
             <div class="text-center mb-20">
-                <h2 class="text-5xl font-black text-slate-900 mb-4">השירותים שלנו</h2>
+                <h2 class="text-5xl font-black text-slate-900 mb-4">🎈 השירותים שלנו</h2>
                 <div class="w-24 h-1 bg-amber-500 mx-auto mb-6"></div>
-                <p class="text-slate-500 text-lg max-w-2xl mx-auto">דוגמות מהעבודה שלנו בשלוש הקטגוריות הראשיות</p>
+                <p class="text-slate-600 text-xl max-w-3xl mx-auto leading-relaxed">
+                    אנחנו בדרך המלך מביאים את הצבע, הטעם והשמחה לכל אירוע. אתם תביאו את האורחים – ואנחנו נדאג לכל השאר עם דוכני מזון מושקעים, עיצובי בלונים משגעים ואווירת חגיגה אמיתית!
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <!-- Portfolio Preview -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-20">
                 <!-- Food Service -->
                 <div class="service-showcase h-96 md:h-[500px] rounded-lg" onclick="viewGalleryCategory('food')">
                     <img src="shaharImages/food/540505335_10230093058729812_5069196991892535758_n.jpg" alt="דוכני מזון">
-                    <div class="service-showcase-overlay">🍽️ אוכל</div>
+                    <div class="service-showcase-overlay">🍽️ דוכני מזון</div>
                 </div>
 
                 <!-- Balloons Service -->
                 <div class="service-showcase h-96 md:h-[500px] rounded-lg" onclick="viewGalleryCategory('ballons')">
                     <img src="shaharImages/ballons/568914358_10230747394927808_6488479483311145136_n.jpg" alt="סידורי בלונים">
-                    <div class="service-showcase-overlay">🎈 בלונים</div>
+                    <div class="service-showcase-overlay">🎈 עיצובים</div>
                 </div>
 
-                <!-- Proposals Service -->
-                <div class="service-showcase h-96 md:h-[500px] rounded-lg" onclick="viewGalleryCategory('meriage')">
-                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="הצעות נישואין">
-                    <div class="service-showcase-overlay">💍 נישואין</div>
+                <!-- Games & Events -->
+                <div class="service-showcase h-96 md:h-[500px] rounded-lg" onclick="viewGalleryCategory('games')">
+                    <img src="shaharImages/games/562329455_10230673619563470_7141604543455030994_n.jpg" alt="ימי כיף">
+                    <div class="service-showcase-overlay">⚽ ימי כיף</div>
                 </div>
+            </div>
+
+            <!-- Detailed Service Descriptions -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+
+                <!-- Service 1: Food Stands -->
+                <div class="bg-white rounded-lg p-8 md:p-10 shadow-sm border-t-4 border-amber-500">
+                    <h3 class="text-2xl font-bold text-amber-600 mb-1">🍿 דוכני המזון שלנו</h3>
+                    <p class="text-slate-500 text-sm mb-6">חווית טעם בלתי נשכחת</p>
+
+                    <p class="text-slate-600 mb-6 leading-relaxed text-sm">
+                        הדוכנים שלנו מגיעים נקיים, מעוצבים ומריחים למרחקים, עם אנשי צוות אדיבים וחומרי גלם מעולים:
+                    </p>
+
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">🍩 העולם המתוק</h4>
+                            <p class="text-slate-600">וופל בלגי חם, פנקייקים נימוחים, צ'ורוס פריך, דונטס צבעוניים, פרצלים חמים וקירות פירות העונה</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">🌭 דוכנים מלוחים</h4>
+                            <p class="text-slate-600">המבורגרים עסיסיים, נקניקיות חמות בלחמנייה ופופקורן פריך</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">🥤 ברים אקטיביים</h4>
+                            <p class="text-slate-600">שייקים מפירות טבעיים ודוכני ברד צבעוניים שמקפיצים כל מסיבה</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">🍭 דוכני נוסטלגיה</h4>
+                            <p class="text-slate-600">שערות סבתא (צמר גפן מתוק), פופקורן וברדים לחוויית ילדות מושלמת</p>
+                        </div>
+                    </div>
+
+                    <button onclick="viewGalleryCategory('food')" class="mt-8 w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 rounded-lg transition-colors">
+                        צפה בגלריית האוכל →
+                    </button>
+                </div>
+
+                <!-- Service 2: Balloons -->
+                <div class="bg-white rounded-lg p-8 md:p-10 shadow-sm border-t-4 border-orange-500">
+                    <h3 class="text-2xl font-bold text-orange-600 mb-1">🎈 עיצובי בלונים ותפאורה</h3>
+                    <p class="text-slate-500 text-sm mb-6">הופכים כל חלל לחגיגה פוטוגנית</p>
+
+                    <p class="text-slate-600 mb-6 leading-relaxed text-sm">
+                        אנחנו הופכים כל חלל לחגיגה פוטוגנית וצבעונית, בהתאמה מלאה לקונספט ולצבעים שתבחרו:
+                    </p>
+
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">📸 קשתות וקירות בלונים</h4>
+                            <p class="text-slate-600">עמדות צילום מושלמות שמרימות את הוויזואליות של האירוע</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">✨ עיצובים מיוחדים</h4>
+                            <p class="text-slate-600">אותיות, מספרים ודמויות מבלונים לפי גיל או סגנון העסק</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">🎯 סידורי שולחן</h4>
+                            <p class="text-slate-600">שדרוג שולחנות ומרכזי חלל לאווירה חגיגית</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">🎉 מתאים לכל שמחה</h4>
+                            <p class="text-slate-600">ימי הולדת, בריתות, בר/בת מצווה, חתונות והצעות נישואין</p>
+                        </div>
+                    </div>
+
+                    <button onclick="viewGalleryCategory('ballons')" class="mt-8 w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition-colors">
+                        צפה בגלריית הבלונים →
+                    </button>
+                </div>
+
+                <!-- Service 3: Events & Games -->
+                <div class="bg-white rounded-lg p-8 md:p-10 shadow-sm border-t-4 border-blue-500">
+                    <h3 class="text-2xl font-bold text-blue-600 mb-1">⚽ ימי כיף ואירועי קונספט</h3>
+                    <p class="text-slate-500 text-sm mb-6">חוויות שלא ישכחו</p>
+
+                    <p class="text-slate-600 mb-6 leading-relaxed text-sm">
+                        רוצים אירוע בלתי נשכח עם ערך מוסף? נבנה עבורכם חבילה חווייתית מלאה באנרגיה ומשחקים:
+                    </p>
+
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">🌍 קונספט ייחודי</h4>
+                            <p class="text-slate-600">עיצוב תפאורה, עמדות ודוכני מזון סביב נושאים מובילים</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">🎂 ימי הולדת חווייתיים</h4>
+                            <p class="text-slate-600">שילוב מנצח של משחקים אקטיביים, הפעלות קצביות ודוכני מזון</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">👥 ימי גיבוש וכיף</h4>
+                            <p class="text-slate-600">פתרון אידיאלי לוועדי עובדים, חברות וארגונים</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1">🎮 משחקים ופעולות</h4>
+                            <p class="text-slate-600">השכרת ציוד, משחקי קונספט וערוצי בידור מלאים בהנאה</p>
+                        </div>
+                    </div>
+
+                    <button onclick="viewGalleryCategory('games')" class="mt-8 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-lg transition-colors">
+                        צפה בגלריית האירועים →
+                    </button>
+                </div>
+
             </div>
         </div>
 
@@ -127,7 +243,7 @@
                     🎈 סידורי בלונים
                 </button>
                 <button onclick="switchGalleryCategory('food')" class="gallery-tab px-6 py-3 rounded-full font-semibold text-sm transition-all bg-slate-200 text-slate-700 hover:bg-slate-300" data-category="food">
-                    🍽️ אוכל
+                    🍽️ דוכנים
                 </button>
                 <button onclick="switchGalleryCategory('games')" class="gallery-tab px-6 py-3 rounded-full font-semibold text-sm transition-all bg-slate-200 text-slate-700 hover:bg-slate-300" data-category="games">
                     🎮 משחקים
