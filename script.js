@@ -1,4 +1,3 @@
-// مفت تمونے لكل قطیگوریہ
 const galleryImages = {
     ballons: [
         'shaharImages/ballons/568914358_10230747394927808_6488479483311145136_n.jpg',
@@ -35,10 +34,14 @@ const galleryImages = {
 
 const categoryNames = {
     ballons: 'סידורי בלונים',
-    food: 'אוכל',
+    food: 'דוכני מזון',
     meriage: 'הצעות נישואין',
-    games: 'משחקים'
+    games: 'ימי כיף ומשחקים'
 };
+
+// משתנים למעקב אחר מצב ה-Lightbox
+let currentCategory = 'ballons';
+let currentImageIndex = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menu-toggle');
@@ -50,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // אתחול אירועים של ה-Lightbox
+    initLightbox();
+
+    // טעינה ראשונית של הגלריה
     loadGalleryImages('ballons');
 });
 
@@ -91,26 +98,116 @@ function switchGalleryCategory(category) {
 }
 
 function loadGalleryImages(category) {
+    currentCategory = category; // עדכון הקטגוריה הנוכחית
     const container = document.getElementById('gallery-container');
     const images = galleryImages[category] || [];
 
     if (images.length === 0) {
         container.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
-                <p style="font-size: 18px; color: #999; margin-bottom: 12px;">אין תמונות זמינות בקטגוריה זו כרגע.</p>
-                <p style="font-size: 14px; color: #bbb;">אנא בדוק שוב בקרוב או צור איתנו קשר לפרטים נוספים.</p>
+            <div class="col-span-full text-center py-16 px-4">
+                <p class="text-lg text-slate-400 mb-2">אין תמונות זמינות בקטגוריה זו כרגע.</p>
+                <p class="text-sm text-slate-300">אנא בדקו שוב בקרוב או צרו איתנו קשר לפרטים נוספים.</p>
             </div>
         `;
         return;
     }
 
+    // הזרקת התמונות עם פונקציית לחיצה לפתיחת ה-Lightbox
     container.innerHTML = images.map((imagePath, index) => `
-        <div class="gallery-item">
+        <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group" onclick="openLightbox(${index})">
             <img
                 src="${imagePath}"
-                alt="תמונה ${index + 1}"
+                alt="${categoryNames[category]} - תמונה ${index + 1}"
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                 onerror="this.src='https://images.unsplash.com/photo-1551632440-0121d4af7d0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'"
             >
         </div>
     `).join('');
+}
+
+/* --- מנגנון LIGHTBOX מובנה וחכם --- */
+
+function initLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+
+    if (!modal) return;
+
+    // סגירה בלחיצה על כפתור ה-X
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // סגירה בלחיצה על הרקע הכהה מסביב לתמונה
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeLightbox();
+        }
+    });
+
+    // כפתורי ניווט (החלפנו כיוונים בקוד כדי להתאים ל-RTL של עברית: הבא לוקח שמאלה, הקודם ימינה)
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); navigateLightbox(1); });
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); navigateLightbox(-1); });
+
+    // תמיכה במקשי מקלדת (חצים ו-Escape) לטובת חווית משתמש ונגישות
+    document.addEventListener('keydown', (e) => {
+        if (modal.classList.contains('hidden')) return;
+
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            navigateLightbox(1); // הבא (שמאל)
+        } else if (e.key === 'ArrowRight') {
+            navigateLightbox(-1); // הקודם (ימין)
+        }
+    });
+}
+
+function openLightbox(index) {
+    const modal = document.getElementById('lightbox-modal');
+    if (!modal) return;
+
+    currentImageIndex = index;
+    updateLightboxDOM();
+
+    // הצגת המודאל עם אנימציית Fade-in חלקה
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+        modal.classList.add('opacity-100');
+    }, 10);
+
+    // מניעת גלילה של הרקע כשהגלריה פתוחה
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    if (!modal) return;
+
+    modal.classList.remove('opacity-100');
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    }, 300); // תואם לזמן ה-duration של ה-transition ב-Tailwind
+}
+
+function navigateLightbox(direction) {
+    const images = galleryImages[currentCategory] || [];
+    if (images.length <= 1) return;
+
+    // חישוב אינדקס מעגלי (אם הגענו לסוף, נחזור להתחלה ולהיפך)
+    currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+    updateLightboxDOM();
+}
+
+function updateLightboxDOM() {
+    const imgElement = document.getElementById('lightbox-img');
+    const captionElement = document.getElementById('lightbox-caption');
+    const images = galleryImages[currentCategory] || [];
+
+    if (!imgElement || images.length === 0) return;
+
+    // עדכון תמונה וכותרת
+    imgElement.src = images[currentImageIndex];
+    captionElement.textContent = `${categoryNames[currentCategory]} • תמונה ${currentImageIndex + 1} מתוך ${images.length}`;
 }
