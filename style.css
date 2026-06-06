@@ -141,3 +141,19 @@ button {
 button:hover {
     opacity: 0.9;
 }
+
+/* הזזת הווידג'ט לפינה השמאלית התחתונה במקום העליונה */
+.userway-widget-container {
+    top: auto !important;
+    bottom: 20px !important;
+    right: auto !important;
+    left: 20px !important;
+}
+
+/* אם הווידג'ט מופיע ככפתור קטן, לעיתים צריך למקד את ה-ID */
+#userway-widget {
+    top: auto !important;
+    bottom: 20px !important;
+    right: auto !important;
+    left: 20px !important;
+}
