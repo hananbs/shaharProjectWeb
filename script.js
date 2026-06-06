@@ -1,4 +1,4 @@
-// מפת תמונות לכל קטגוריה
+// مفت تمونے لكل قطیگوریہ
 const galleryImages = {
     ballons: [
         'shaharImages/ballons/568914358_10230747394927808_6488479483311145136_n.jpg',
@@ -33,7 +33,6 @@ const galleryImages = {
     ]
 };
 
-// קטגוריות תיאורים
 const categoryNames = {
     ballons: 'סידורי בלונים',
     food: 'אוכל',
@@ -41,88 +40,75 @@ const categoryNames = {
     games: 'משחקים'
 };
 
-// האזנה לאירועים מרכזיים כשה-DOM נטען
 document.addEventListener('DOMContentLoaded', () => {
-    // הגדרת משתנים לתפריט המובייל
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    // פתיחה וסגירה של המבורגר
     if (menuToggle && mobileMenu) {
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
     }
 
-    // טעינת הגלריה ההתחלתית
     loadGalleryImages('ballons');
 });
 
-// פונקציית ניווט בין ה"עמודים"
 function navigateTo(viewId) {
     const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenu) {
-        mobileMenu.classList.add('hidden'); // סגירת תפריט מובייל בעת לחיצה
+        mobileMenu.classList.add('hidden');
     }
 
-    // הסתרת כל התצוגות
     document.querySelectorAll('.page-view').forEach(view => {
         view.classList.remove('active');
     });
 
-    // הצגת התצוגה המבוקשת
     const targetView = document.getElementById(`view-${viewId}`);
     if (targetView) {
         targetView.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // גלילה למעלה
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
 
-// פונקציית עבור לקטגוריית גלריה מכרטיס שירות
 function viewGalleryCategory(category) {
     navigateTo('gallery');
     setTimeout(() => switchGalleryCategory(category), 100);
 }
 
-// פונקציית החלפת קטגוריות בגלריה
 function switchGalleryCategory(category) {
-    // עדכון הכפתורים הפעילים
     document.querySelectorAll('.gallery-tab').forEach(tab => {
-        tab.classList.remove('active', 'bg-amber-500', 'text-white', 'shadow-lg', 'shadow-amber-500/30');
+        tab.classList.remove('active', 'bg-amber-500', 'text-white', 'shadow-md');
         tab.classList.add('bg-slate-200', 'text-slate-700', 'hover:bg-slate-300');
     });
 
     const activeTab = document.querySelector(`[data-category="${category}"]`);
     if (activeTab) {
         activeTab.classList.remove('bg-slate-200', 'text-slate-700', 'hover:bg-slate-300');
-        activeTab.classList.add('active', 'bg-amber-500', 'text-white', 'shadow-lg', 'shadow-amber-500/30');
+        activeTab.classList.add('active', 'bg-amber-500', 'text-white', 'shadow-md');
     }
 
-    // טעינת התמונות של הקטגוריה
     loadGalleryImages(category);
 }
 
-// פונקציית טעינת תמונות גלריה
 function loadGalleryImages(category) {
     const container = document.getElementById('gallery-container');
     const images = galleryImages[category] || [];
 
     if (images.length === 0) {
         container.innerHTML = `
-            <div class="col-span-2 md:col-span-3 text-center py-12">
-                <p class="text-slate-500 text-lg">אין תמונות זמינות בקטגוריה זו כרגע.</p>
-                <p class="text-slate-400 text-sm mt-2">אנא חזור מאוחר יותר או צור קשר לפרטים נוספים.</p>
+            <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+                <p style="font-size: 18px; color: #999; margin-bottom: 12px;">אין תמונות זמינות בקטגוריה זו כרגע.</p>
+                <p style="font-size: 14px; color: #bbb;">אנא בדוק שוב בקרוב או צור איתנו קשר לפרטים נוספים.</p>
             </div>
         `;
         return;
     }
 
     container.innerHTML = images.map((imagePath, index) => `
-        <div class="gallery-item rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+        <div class="gallery-item">
             <img
                 src="${imagePath}"
-                alt="תמונת ${categoryNames[category]} מספר ${index + 1}"
-                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                alt="תמונה ${index + 1}"
                 onerror="this.src='https://images.unsplash.com/photo-1551632440-0121d4af7d0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'"
             >
         </div>
