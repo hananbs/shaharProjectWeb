@@ -117,6 +117,22 @@ body {
     }
 }
 
+/* Service Card Container - Flexbox Layout */
+.service-card-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.service-card-content {
+    flex-grow: 1;
+}
+
+.service-card-button {
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
 /* Clean, minimal buttons */
 button {
     transition: opacity 0.2s ease;
