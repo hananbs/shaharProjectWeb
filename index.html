@@ -121,16 +121,29 @@
                 <h2 class="text-4xl font-black text-slate-900 mb-4">גלריית אירועים</h2>
                 <p class="text-slate-500 text-lg">טעימה קטנה מהקסם שאנחנו יוצרים בשטח.</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="שולחן מעוצב לאירוע עם פרחים וכלי הגשה יוקרתיים" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                    <img src="https://images.unsplash.com/photo-1530103862676-de8892bc952f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="עיצוב קיר בלונים בצבעי פסטל לכבוד אירוע" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="דוכן מזון המגיש מנות שף קטנות בכוסות אישיות" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                </div>
+
+            <!-- Category Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <button onclick="switchGalleryCategory('ballons')" class="gallery-tab active px-6 py-3 rounded-full font-semibold text-sm transition-all bg-amber-500 text-white shadow-lg shadow-amber-500/30" data-category="ballons">
+                    🎈 סידורי בלונים
+                </button>
+                <button onclick="switchGalleryCategory('food')" class="gallery-tab px-6 py-3 rounded-full font-semibold text-sm transition-all bg-slate-200 text-slate-700 hover:bg-slate-300" data-category="food">
+                    🍽️ אוכל
+                </button>
+                <button onclick="switchGalleryCategory('meriage')" class="gallery-tab px-6 py-3 rounded-full font-semibold text-sm transition-all bg-slate-200 text-slate-700 hover:bg-slate-300" data-category="meriage">
+                    💍 הצעות נישואין
+                </button>
+                <button onclick="switchGalleryCategory('games')" class="gallery-tab px-6 py-3 rounded-full font-semibold text-sm transition-all bg-slate-200 text-slate-700 hover:bg-slate-300" data-category="games">
+                    🎮 משחקים
+                </button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div id="gallery-container" class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <!-- Images will be loaded here by JavaScript -->
+                <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-sm animate-pulse"></div>
+                <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-sm animate-pulse"></div>
+                <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-sm animate-pulse"></div>
             </div>
         </div>
 
