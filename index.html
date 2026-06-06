@@ -50,7 +50,7 @@
     <main id="main-content" class="flex-grow" role="main">
         <!-- עמוד ראשי (Home) -->
         <div id="view-home" class="page-view active">
-            <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-24 md:py-36 px-4 text-center relative overflow-hidden">
+            <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-32 md:py-48 px-4 text-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-20"></div>
                 <div class="max-w-4xl mx-auto relative z-10">
                     <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-sm font-bold uppercase tracking-widest px-5 py-2 rounded-full inline-block mb-6">הפקות בוטיק שעושות את ההבדל</span>
@@ -91,25 +91,28 @@
                 <p class="text-slate-500 text-lg max-w-2xl mx-auto">מעטפת לוגיסטית ועיצובית מלאה לאירועים פרטיים ועסקיים.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col group hover:shadow-xl hover:border-amber-200 transition-all duration-300">
-                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="דוכני מזון" class="h-48 w-full object-cover">
+                <div class="service-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col group hover:shadow-xl hover:border-amber-200 transition-all duration-300" onclick="viewGalleryCategory('food')">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="דוכני מזון" class="h-72 w-full object-cover">
                     <div class="p-8 flex-1">
                         <h3 class="text-2xl font-bold text-slate-900 mb-3">קייטרינג ודוכני מזון</h3>
                         <p class="text-slate-600 text-sm leading-relaxed">דוכני מזון מעוצבים המשדרגים כל אירוע: מכונות ברד, וופל בלגי חם על מקל, שייקים מפירות טבעיים, נקניקיות פרימיום ועוד.</p>
+                        <div class="mt-4 text-amber-600 font-semibold text-sm group-hover:translate-x-2 transition-transform">→ צפה בגלריה</div>
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col group hover:shadow-xl hover:border-indigo-200 transition-all duration-300">
-                    <img src="https://images.unsplash.com/photo-1530103862676-de8892bc952f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="עיצוב בלונים" class="h-48 w-full object-cover">
+                <div class="service-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col group hover:shadow-xl hover:border-indigo-200 transition-all duration-300" onclick="viewGalleryCategory('ballons')">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8892bc952f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="עיצוב בלונים" class="h-72 w-full object-cover">
                     <div class="p-8 flex-1">
                         <h3 class="text-2xl font-bold text-slate-900 mb-3">עיצוב קונספט ובלונים</h3>
                         <p class="text-slate-600 text-sm leading-relaxed">הלבשת חללים באמצעות ארכיטקטורת בלונים: קירות צילום, קשתות אורגניות, שטיחי בלונים ועיצובי חדרים יוקרתיים.</p>
+                        <div class="mt-4 text-indigo-600 font-semibold text-sm group-hover:translate-x-2 transition-transform">→ צפה בגלריה</div>
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col group hover:shadow-xl hover:border-rose-200 transition-all duration-300">
-                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="הצעות נישואין" class="h-48 w-full object-cover">
+                <div class="service-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col group hover:shadow-xl hover:border-rose-200 transition-all duration-300" onclick="viewGalleryCategory('meriage')">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="הצעות נישואין" class="h-72 w-full object-cover">
                     <div class="p-8 flex-1">
                         <h3 class="text-2xl font-bold text-slate-900 mb-3">הפקות הצעות נישואין</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">ניהול לוגיסטי מלא של הרגע המרגש. אותיות ענק מוארות, שטיחים, מערכות הגברה ומזרקות אש מתוזמנות היטב.</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">ניהול לוגיסטי מלא של הרגע המרגש. אותיות ענק מוארות, שטיח אדום מלכותי, 6 מזרקות אש קרה (בטיחותיות ומאושרות), עלי כותרת ומערכת הגברה.</p>
+                        <div class="mt-4 text-rose-600 font-semibold text-sm group-hover:translate-x-2 transition-transform">→ צפה בגלריה</div>
                     </div>
                 </div>
             </div>
@@ -139,11 +142,11 @@
             </div>
 
             <!-- Gallery Grid -->
-            <div id="gallery-container" class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+            <div id="gallery-container" class="gallery-masonry">
                 <!-- Images will be loaded here by JavaScript -->
-                <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-sm animate-pulse"></div>
-                <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-sm animate-pulse"></div>
-                <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-sm animate-pulse"></div>
+                <div class="gallery-item rounded-2xl bg-slate-100 shadow-sm animate-pulse"></div>
+                <div class="gallery-item rounded-2xl bg-slate-100 shadow-sm animate-pulse"></div>
+                <div class="gallery-item rounded-2xl bg-slate-100 shadow-sm animate-pulse"></div>
             </div>
         </div>
 

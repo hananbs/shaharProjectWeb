@@ -78,6 +78,12 @@ function navigateTo(viewId) {
     }
 }
 
+// פונקציית עבור לקטגוריית גלריה מכרטיס שירות
+function viewGalleryCategory(category) {
+    navigateTo('gallery');
+    setTimeout(() => switchGalleryCategory(category), 100);
+}
+
 // פונקציית החלפת קטגוריות בגלריה
 function switchGalleryCategory(category) {
     // עדכון הכפתורים הפעילים
@@ -112,7 +118,7 @@ function loadGalleryImages(category) {
     }
 
     container.innerHTML = images.map((imagePath, index) => `
-        <div class="aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+        <div class="gallery-item rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
             <img
                 src="${imagePath}"
                 alt="תמונת ${categoryNames[category]} מספר ${index + 1}"
